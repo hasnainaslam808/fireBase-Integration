@@ -30,4 +30,8 @@ password:string='';
   onLogin(formValue: any) {
    
 }
+
+signGoogle(){
+  this.auth.googleSignIn();
+}
 }

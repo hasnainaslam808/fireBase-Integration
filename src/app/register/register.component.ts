@@ -14,8 +14,9 @@ password:string='';
 
   ngOnInit(): void {
   }
-  onRegister(){
-    this.auth.register(this.email, this.password);
+  onRegister(form:any){
+console.log(form)
+    this.auth.register(form.email, form.password);
     this.email='';
     this.password='';
   }
