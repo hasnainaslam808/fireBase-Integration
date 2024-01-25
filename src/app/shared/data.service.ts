@@ -42,4 +42,9 @@ this.addStudent(student);
   }
   
 
+  // get all products
+
+  getAllProduct(){
+    return this.afs.collection('/product').snapshotChanges();
+  }
 }

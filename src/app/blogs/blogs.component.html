@@ -1,71 +1,73 @@
 <app-header></app-header>
-<div class="col-md-5 mt-3 ml-3">
-    <ul role="list" class="divide-y divide-gray-100 ">
-        <li class="flex justify-between gap-x-6 py-3 border shadow">
-            <div class="flex min-w-0 ">
-                <div class="min-w-0 flex-auto">
-                    <p class=" text-sm font-semibold leading-6 text-gray-900 ml-2">Wood Card</p>
-                    <p class="mt-1 truncate text-xs leading-5 text-gray-500 ml-2">Designed by Good Goods, Inc.</p>
-                </div>
-            </div>
-            <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                <button (click)="seeDetails()" class="btn btn-outline-success mr-2" *ngIf="!detail">See Details</button>
-                <button (click)="seeDetails()" class="btn btn-outline-success mr-2" *ngIf="detail">Hide Details</button>
-            </div>
-        </li>
-    </ul>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5 mt-3 ml-3" *ngFor="let prod of productList">
+            <ul role="list" class="divide-y divide-gray-100 ">
+                <li class="flex justify-between gap-x-6 py-3 border shadow">
+                    <div class="flex min-w-0 ">
+                        <div class="min-w-0 flex-auto">
+                            <h4 class=" text-sm font-semibold leading-6 text-gray-900 ml-2">{{prod.prodName |
+                                uppercase}}</h4>
+                            <p class="mt-1 truncate text-xs leading-5 text-gray-500 ml-2">{{prod.prodDes | uppercase}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+                        <button (click)="seeDetails(prod)" class="btn btn-outline-success mr-2">{{selectedProduct?.id != prod.id || selectedProduct == undefined ? 'See Details': 'Hide Details'}}</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 
 
-<div class="bg-white" *ngIf="detail">
-    <div
+<div class="bg-white" *ngIf="selectedProduct">
+    <div 
         class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
         <div>
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Wood Card</h2>
-            <p class="mt-4 text-gray-500">The walnut wood card tray is precision milled to perfectly fit a stack of
-                Focus cards. The powder coated steel divider separates active cards from new ones, or can be used to
-                archive important task lists.</p>
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{selectedProduct.prodName | uppercase}}</h2>
+            <p class="mt-4 text-gray-500">{{selectedProduct.prodDes | uppercase}}</p>
 
             <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
                 <div class="border-t border-gray-200 pt-4">
+                    <dt class="font-medium text-gray-900">Price</dt>
+                    <dd class="mt-2 text-sm text-gray-500">{{selectedProduct.prodPrice}}</dd>
+                </div>
+                <div class="border-t border-gray-200 pt-4">
                     <dt class="font-medium text-gray-900">Origin</dt>
-                    <dd class="mt-2 text-sm text-gray-500">Designed by Good Goods, Inc.</dd>
+                    <dd class="mt-2 text-sm text-gray-500">{{selectedProduct.prodOrigin}}</dd>
                 </div>
                 <div class="border-t border-gray-200 pt-4">
                     <dt class="font-medium text-gray-900">Material</dt>
-                    <dd class="mt-2 text-sm text-gray-500">Solid walnut base with rare earth magnets and powder coated
-                        steel card cover</dd>
+                    <dd class="mt-2 text-sm text-gray-500">{{selectedProduct.prodMaterial}}</dd>
                 </div>
                 <div class="border-t border-gray-200 pt-4">
                     <dt class="font-medium text-gray-900">Dimensions</dt>
-                    <dd class="mt-2 text-sm text-gray-500">6.25&quot; x 3.55&quot; x 1.15&quot;</dd>
+                    <dd class="mt-2 text-sm text-gray-500">{{selectedProduct.prodDemension}}</dd>
                 </div>
                 <div class="border-t border-gray-200 pt-4">
                     <dt class="font-medium text-gray-900">Finish</dt>
-                    <dd class="mt-2 text-sm text-gray-500">Hand sanded and finished with natural oil</dd>
+                    <dd class="mt-2 text-sm text-gray-500">{{selectedProduct.prodFinish}}</dd>
                 </div>
                 <div class="border-t border-gray-200 pt-4">
                     <dt class="font-medium text-gray-900">Includes</dt>
-                    <dd class="mt-2 text-sm text-gray-500">Wood card tray and 3 refill packs</dd>
+                    <dd class="mt-2 text-sm text-gray-500">{{selectedProduct.prodIncludes}}</dd>
                 </div>
-                <div class="border-t border-gray-200 pt-4">
-                    <dt class="font-medium text-gray-900">Considerations</dt>
-                    <dd class="mt-2 text-sm text-gray-500">Made from natural materials. Grain and color vary with each
-                        item.</dd>
-                </div>
+
             </dl>
         </div>
         <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
-            <img src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-01.jpg"
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMYFu0SA08RbOurgKxJSP01On6HIKIUzypQA&usqp=CAU"
                 alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
                 class="rounded-lg bg-gray-100">
-            <img src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-02.jpg"
+            <img src="https://www.digitaltrends.com/wp-content/uploads/2022/10/iPhone-14-Plus-Back-in-Hand.jpg?fit=3000%2C2000&p=1"
                 alt="Top down view of walnut card tray with embedded magnets and card groove."
                 class="rounded-lg bg-gray-100">
-            <img src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-03.jpg"
+            <img src="https://cdn.mos.cms.futurecdn.net/ERGstnTsm5XsCyH2z8FNqA.jpg"
                 alt="Side of walnut card tray with card groove and recessed card area." class="rounded-lg bg-gray-100">
-            <img src="https://tailwindui.com/img/ecommerce-images/product-feature-03-detail-04.jpg"
+            <img src="https://www.digitaltrends.com/wp-content/uploads/2022/10/iPhone-14-Plus-Back-Logo-Bright.jpg?p=1"
                 alt="Walnut card tray filled with cards and card angled in dedicated groove."
                 class="rounded-lg bg-gray-100">
         </div>
