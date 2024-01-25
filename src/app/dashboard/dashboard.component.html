@@ -1,74 +1,31 @@
-<!-- <div class="card text-center">
-    <div class="card-header">
-     Welcome
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Firebase Integration</h5>
-     
-      <a  class="btn btn-warning" (click)="logOut()">Log Out</a>
-    </div>
-    <div class="card-footer text-muted">
-      2 days ago
-    </div>
-  </div> -->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4 mt-5">
-      <div class="card border-0 shadow p-3">
-        <div class="form-floating mb-3 text-center">
-          <h5 for="firstName" class="text-warning">Add Student</h5>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="firstName" name="firstName" [(ngModel)]="firstName">
-          <label for="firstName">First Name</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="lastName">
-          <label for="lastName">Last Name</label>
+
+<app-header></app-header>
+<!--  -->
+
+  <div class="bg-white">
+    <div class="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+        <svg viewBox="0 0 1024 1024" class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0" aria-hidden="true">
+          <circle cx="512" cy="512" r="512" fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+          <defs>
+            <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
+              <stop stop-color="#7775D6" />
+              <stop offset="1" stop-color="#E935C1" />
+            </radialGradient>
+          </defs>
+        </svg>
+        <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+          <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Gadget Gazette:<br> Unveiling the Best Products.</h2>
+          <p class="mt-6 text-lg leading-8 text-gray-300">Feel free to provide more details about the specific products .</p>
+          <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+            <a href="#" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Get started</a>
+            <a href="#" class="text-sm font-semibold leading-6 text-white">Learn more <span aria-hidden="true">→</span></a>
+          </div>
         </div>
 
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email">
-          <label for="email">Email address</label>
-        </div>
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="mobile" name="mobile" [(ngModel)]="mobileNumber">
-          <label for="mobile">Mobile</label>
-        </div>
-        <button type="button" class="btn btn-outline-success" (click)="addStudent()" *ngIf="!isUpdateMode">Add Student</button>
-        <button type="button" class="btn btn-outline-success" (click)="updateStudent()" *ngIf="isUpdateMode">Update Student</button>
-      </div>
-    </div>
-    <div class="col-md-8 mt-2">
-      <h5 class="text-danger"> Student List</h5>
-      <div class="card p-3 shadow">
-        <div class="card-body">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Mobile</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let Student of studentList">
-                <td >{{Student.firstName}}</td>
-                <td>{{Student.lastName}}</td>
-                <td>{{Student.email}}</td>
-                <td>{{Student.mobileNumber}}</td>
-                <td>
-                  <button class="btn btn-outline-danger" (click)="deleteStudent(Student)">Delete</button>
-                  <a style="cursor: pointer; margin-left: 4px;" (click)="updateStudentForm(Student)"><i class="fa-solid fa-pen"></i></a>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
       </div>
     </div>
   </div>
-</div>
+  
+
+
