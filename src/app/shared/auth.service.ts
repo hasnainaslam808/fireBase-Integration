@@ -78,4 +78,14 @@ googleSignIn(){
     alert(err.message);
   })
 }
+// sig with facebook
+// signInWithFacebook() {
+//   this.fireauth.signInWithPopup(new this.fireauth.FacebookAuthProvider())
+//     .then((result) => {
+//       console.log('User signed in:', result.user);
+//     })
+//     .catch((error) => {
+//       console.error('Error signing in with Facebook:', error);
+//     });
+// }
 }

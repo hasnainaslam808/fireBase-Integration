@@ -39,27 +39,4 @@ export class BlogsComponent implements OnInit {
 
 
 
-  productObj:Product={
-    id: '',
-  
-    prodName:'',
-      prodDes:'',
-      prodPrice:'',
-      prodOrigin:'',
-      prodMaterial:'',
-      prodDemension:'',
-      prodFinish:'',
-      prodIncludes:'',
-  };
-  id:string='';
-  prodName:string='';
-  prodDes:string='';
-  prodPrice:string='';
-  prodOrigin:string='';
-  prodMaterial:string='';
-  prodDemension:string='';
-  prodFinish:string='';
-  prodIncludes:string='';
-
-
 }
