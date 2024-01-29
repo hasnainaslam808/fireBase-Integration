@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,9 +28,7 @@ password:string='';
     this.showPassword = !this.showPassword;
 
   }
-  onLogin(formValue: any) {
-   
-}
+
 
 signGoogle(){
   this.auth.googleSignIn();

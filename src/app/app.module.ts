@@ -14,6 +14,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { HeaderComponent } from './header/header.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
 
   ],
   providers: [],

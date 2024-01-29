@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {  Router } from '@angular/router';
 import{GoogleAuthProvider} from '@angular/fire/auth';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private fireauth:AngularFireAuth,private router:Router) { }
+  constructor(private fireauth:AngularFireAuth,private router:Router,private toastr: ToastrService) { }
 
   //login user
   login(email:string,password:string){
@@ -19,20 +21,20 @@ export class AuthService {
         this.router.navigate(['dashboard']);
       } 
   }, err=>{
-    alert(err.message);
+    this.toastr.error(err.message);
     this.router.navigate(['/login']);
   })
   }
 
 
   //register user
-  register(emain:string,password:string) {
-    this.fireauth.createUserWithEmailAndPassword(emain,password).then((res:any) =>{
-      alert('registration successful')
+  register(email:string,password:string) {
+    this.fireauth.createUserWithEmailAndPassword(email,password).then((res:any) =>{
+      this.toastr.success('registration successful')
 this.router.navigate(['/login']);
 this.sendEmailForVarification(res.user);
     }, err =>{
-      alert(err.message);
+      this.toastr.error(err.message);
  this.router.navigate(['/register']);   
     });  
 }
@@ -45,17 +47,17 @@ logOut() {
     this.router.navigate(['/login']);
   }
 ,err=>{
-  alert(err.message);
+  this.toastr.error(err.message);
 });
 }
 
 //forgetPassword
 forgetPassword(email:string){
 this.fireauth.sendPasswordResetEmail(email).then(() =>{
-  alert("successfull");
+  this.toastr.success("successfull");
 this.router.navigate(['/verify-email']);
 },err=>{
-  alert(err.message);
+  this.toastr.success(err.message);
 });
 }
 
@@ -64,7 +66,7 @@ sendEmailForVarification(user:any){
   user.sendEmailForVarification().then((res:any) =>{
 this.router.navigate(['/verify-email']);	
   },(err:any)=>{
-alert(err.message);
+this.toastr.error(err.message);
   });
 }
 
@@ -75,7 +77,7 @@ googleSignIn(){
     this.router.navigate(['dashboard']);
     localStorage.setItem('token', JSON.stringify(res.user?.uid))
   },err=>{
-    alert(err.message);
+    this.toastr.error(err.message);
   })
 }
 // sig with facebook

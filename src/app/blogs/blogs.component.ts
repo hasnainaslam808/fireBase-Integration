@@ -15,7 +15,8 @@ export class BlogsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProduct();
-    console.log(this.selectedProduct);
+ 
+
     
   }
   seeDetails(product: Product){
@@ -30,6 +31,7 @@ export class BlogsComponent implements OnInit {
       this.productList = res.map((e:any)=>{
         const data = e.payload.doc.data();
         data.id = e.payload.doc.id;
+console.log(data.length);
         return data;
       })
     }, err =>{
