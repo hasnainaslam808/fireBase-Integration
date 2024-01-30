@@ -11,13 +11,12 @@ export class BlogsComponent implements OnInit {
   detail:boolean = false;
   productList: Product[]=[];
   selectedProduct!: Product;
+  prodLength:number = 0;
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
     this.getAllProduct();
- 
 
-    
   }
   seeDetails(product: Product){
     // this.detail = !this.detail;
@@ -28,12 +27,15 @@ export class BlogsComponent implements OnInit {
 
   getAllProduct(){
     this.data.getAllProduct().subscribe(res =>{
+      console.log(res);
+      
       this.productList = res.map((e:any)=>{
         const data = e.payload.doc.data();
         data.id = e.payload.doc.id;
-console.log(data.length);
         return data;
       })
+      this.prodLength=this.productList.length
+
     }, err =>{
       alert('Error Fetching Dats')
     })

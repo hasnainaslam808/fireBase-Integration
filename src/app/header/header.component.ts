@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../shared/auth.service';
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-header',
@@ -7,13 +8,14 @@ import { AuthService } from '../shared/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private auth: AuthService){}
+  @Input() productLength: number | undefined;
+  constructor(private auth: AuthService,private data:DataService){}
      logOut(){
 this.auth.logOut();
   }
 
   ngOnInit(): void {
+
   }
 
 }

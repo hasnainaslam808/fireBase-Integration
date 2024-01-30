@@ -6,7 +6,10 @@ import { Student } from '../model/student';
 })
 export class DataService {
 
-  constructor(private afs:AngularFirestore) { }
+
+  // productLength: any
+  constructor(private afs:AngularFirestore) {}
+   
 
 
 
