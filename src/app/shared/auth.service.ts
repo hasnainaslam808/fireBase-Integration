@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {  Router } from '@angular/router';
-// import{GoogleAuthProvider} from '@angular/fire/auth';
+import{GoogleAuthProvider} from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -73,12 +73,12 @@ this.toastr.error(err.message);
 
 //sign with google
 googleSignIn(){
-  // return this.fireauth.signInWithPopup(new GoogleAuthProvider).then((res:any)=>{
-  //   this.router.navigate(['dashboard']);
-  //   localStorage.setItem('token', JSON.stringify(res.user?.uid))
-  // },err=>{
-  //   this.toastr.error(err.message);
-  // })
+  return this.fireauth.signInWithPopup(new GoogleAuthProvider).then((res:any)=>{
+    this.router.navigate(['dashboard']);
+    localStorage.setItem('token', JSON.stringify(res.user?.uid))
+  },err=>{
+    this.toastr.error(err.message);
+  })
 }
 // sig with facebook
 // signInWithFacebook() {

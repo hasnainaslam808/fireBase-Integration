@@ -16,8 +16,12 @@ export class DataService {
   // add student
 
   addStudent(student:Student){
+    const classroom = {
+      className: 'student',
+      rollnumber:"three"
+    }
     student.id = this.afs.createId();
-    return this.afs.collection('/students').add(student);
+    return this.afs.collection('/classrooms').add(classroom);
   }
 
 

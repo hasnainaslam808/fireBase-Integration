@@ -12,35 +12,49 @@ export class StudentListComponent implements OnInit {
 
 
   isUpdateMode: boolean = false;
-studentList: Student[]=[];
-studentObj:Student={
-  id: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  mobileNumber: ''
-};
-id:string='';
-firstName:string='';
-lastName:string='';
-email:string='';
-mobileNumber:string='';
-  constructor(private auth:AuthService,private data:DataService) { }
+  studentList: Student[] = [];
+  studentObj: Student = {
+    id: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    mobileNumber: ''
+  };
+  id: string = '';
+  firstName: string = '';
+  lastName: string = '';
+  email: string = '';
+  mobileNumber: string = '';
+  constructor(private auth: AuthService, private data: DataService) { }
 
   ngOnInit(): void {
     this.getAllStudents();
   }
 
 
-// get all students 
-  getAllStudents(){
-    this.data.getAllStudent().subscribe(res =>{
-      this.studentList = res.map((e:any)=>{
+
+  // get all students 
+  getAllStudents() {
+    let id:any="l5vYc9ltVAkYV7kfXecl"
+    
+    this.data.getAllStudent().subscribe(res => {
+      this.studentList = res.map((e: any) => {
+        console.log(e);
+        console.log(e.payload);
+        console.log(e.payload.doc);
+        
+        
         const data = e.payload.doc.data();
         data.id = e.payload.doc.id;
+        console.log('hi'+data);
+        
         return data;
+        
       })
-    }, err =>{
+      console.log(res);
+      console.log(this.studentList);
+      
+    }, err => {
       alert('Error Fetching Dats')
     })
   }
@@ -50,9 +64,9 @@ mobileNumber:string='';
   // delete student
 
 
-  deleteStudent(student:Student){
-    if(window.confirm('Are you sure want to delete this student'+student.firstName+' '+student.lastName+'?')){
-    this.data.deleteStudent(student);
+  deleteStudent(student: Student) {
+    if (window.confirm('Are you sure want to delete this student' + student.firstName + ' ' + student.lastName + '?')) {
+      this.data.deleteStudent(student);
     }
   }
 
@@ -62,12 +76,12 @@ mobileNumber:string='';
       alert('Please enter all fields');
       return;
     }
-  
+
     if (this.id) {
-    
+
       this.updateStudent();
     } else {
-     
+
       this.studentObj.id = '';
       this.studentObj.email = this.email;
       this.studentObj.mobileNumber = this.mobileNumber;
@@ -75,18 +89,18 @@ mobileNumber:string='';
       this.studentObj.lastName = this.lastName;
       this.data.addStudent(this.studentObj);
     }
-  
+
     this.resetForm();
   }
-  
+
   // reset form
 
-  resetForm(){
-    this.id='',
-    this.firstName= '',
-    this.lastName= '',
-   this.email= '',
-    this.mobileNumber= ''
+  resetForm() {
+    this.id = '',
+      this.firstName = '',
+      this.lastName = '',
+      this.email = '',
+      this.mobileNumber = ''
 
     this.isUpdateMode = false;
   }
@@ -95,7 +109,7 @@ mobileNumber:string='';
 
 
   updateStudentForm(student: Student) {
- 
+
     this.id = student.id;
     this.firstName = student.firstName;
     this.lastName = student.lastName;
@@ -104,7 +118,7 @@ mobileNumber:string='';
 
 
     this.isUpdateMode = true;
-  
+
   }
   updateStudent() {
     if (this.id) {
@@ -115,7 +129,7 @@ mobileNumber:string='';
         email: this.email,
         mobileNumber: this.mobileNumber
       };
-  
+
 
       this.data.updateStudent(updatedStudent);
       this.resetForm();
