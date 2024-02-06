@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { AngularFireMessaging } from "@angular/fire/compat/messaging";
 import{getMessaging,getToken,onMessage} from'firebase/messaging';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +19,7 @@ export class DataService {
    }
 
   // productLength: any
-  constructor(private afs:AngularFirestore,private afm: AngularFireMessaging) {
+  constructor(private afs:AngularFirestore,private afm: AngularFireMessaging,private http: HttpClient) {
     
     this.afm.messages.subscribe((_messaging:any) => {
       _messaging.onMessage = _messaging.onMessage.bind(_messaging);
@@ -26,6 +27,50 @@ export class DataService {
     })
   }
    
+
+
+
+
+
+  private readonly cloudFunctionUrl = '';
+
+
+
+  postArticle(article: any) {
+    // Your logic to post the article
+
+    // After successfully posting the article, trigger the Cloud Function
+    this.triggerCloudFunction().subscribe(
+      () => console.log('Cloud Function triggered successfully'),
+      (error) => console.error('Error triggering Cloud Function', error)
+    );
+  }
+
+  private triggerCloudFunction() {
+    return this.http.get(this.cloudFunctionUrl);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
