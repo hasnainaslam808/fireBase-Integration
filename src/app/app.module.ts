@@ -17,15 +17,23 @@ import { AsyncPipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataService} from './shared/data.service';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 import{AngularFireStorageModule}from '@angular/fire/compat/storage';
 import{AngularFireMessagingModule} from '@angular/fire/compat/messaging';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import{AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import{AngularFireModule} from '@angular/fire/compat'
+import { HttpClientModule } from '@angular/common/http';
+import { ChatsComponent } from './chats/chats.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     LoginComponent,
@@ -36,6 +44,7 @@ import{AngularFireModule} from '@angular/fire/compat'
     BlogsComponent,
     StudentListComponent,
     HeaderComponent,
+    ChatsComponent,
 
     
   ],
@@ -50,7 +59,10 @@ import{AngularFireModule} from '@angular/fire/compat'
     AngularFireStorageModule,
     AngularFireMessagingModule,
     BrowserAnimationsModule,
-
+    HttpClientModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
+    
   ],
   providers: [DataService,AsyncPipe],
   bootstrap: [AppComponent]
