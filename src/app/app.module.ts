@@ -19,6 +19,11 @@ import { DataService} from './shared/data.service';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import{MatMenuModule} from '@angular/material/menu';
+import{MatToolbarModule} from '@angular/material/toolbar';
+import{MatButtonModule} from '@angular/material/button';
+import{MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 import{AngularFireStorageModule}from '@angular/fire/compat/storage';
@@ -61,7 +66,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     HttpClientModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+
     
   ],
   providers: [DataService,AsyncPipe],

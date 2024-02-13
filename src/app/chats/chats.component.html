@@ -1,9 +1,15 @@
 <div class="container">
     <div class="chat-list mat-elevation-z5">
-        <div>
+        <div class="search-input">
             <mat-form-field>
-                <input matInput placeholder="search for users..." [formControl]="searchControl" > 
+                <input matInput placeholder="search for users..." [formControl]="searchControl"
+                    [matAutocomplete]="users" />
             </mat-form-field>
+            <mat-autocomplete #users="matAutocomplete">
+<mat-option>
+    hello
+</mat-option>
+            </mat-autocomplete>
         </div>
     </div>
     <div class="messages mat-elevation-z5"></div>
